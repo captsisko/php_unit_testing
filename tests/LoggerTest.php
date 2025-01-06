@@ -11,7 +11,10 @@ final class LoggerTest extends TestCase {
 
   protected function setUp() : void {
     $this->loggerService = $this->getMockBuilder(LoggerService::class)->getMock();
-    $this->logger = new Logger($this->loggerService);
+    $this->logger = $this->getMockBuilder(Logger::class)
+      ->setConstructorArgs([$this->loggerService])
+      ->onlyMethods([])
+      ->getMock();
   }
 
   public function testProcessMessageFail() {
