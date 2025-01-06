@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use unit_test_application\stage_01\Calculator;
+use unit_test_application\DataProvider;
 
 final class CalculatorTest extends TestCase {
   private Calculator $calculator;
@@ -9,46 +10,8 @@ final class CalculatorTest extends TestCase {
     $this->calculator = new Calculator();
   }
 
-  public static function dataForAddition() {
-    return [
-      [2, 1, 1],
-      [3, 3, 0],
-      [-2, -1, -1],
-//      [PHP_INT_MAX+1, PHP_INT_MAX, 1]
-    ];
-  }
-
-  public static function dataForSubtraction() {
-    return [
-      [0, 1, 1],
-      [-2, -1, 1],
-      [-1, -1, 0],
-      [0, -1, -1],
-      [PHP_INT_MAX, PHP_INT_MAX, 0],
-      [PHP_INT_MAX-1, PHP_INT_MAX, 1],
-    ];
-  }
-
-  public static function dataForMultiply() {
-    return [
-      [0, 0, 0],
-      [1, -1, -1],
-      [0, 1, 0],
-      [PHP_INT_MAX, 1, PHP_INT_MAX],
-    ];
-  }
-
-  public static function dataForDivsion() {
-    return [
-      [0.0, 0, 1],
-      [2.0, 4, 2],
-      [-20.0, -40, 2],
-      [2.5, 5, 2],
-    ];
-  }
-
   /**
-   * @dataProvider dataForAddition
+   * @dataProvider \unit_test_application\DataProvider::dataForAddition()
    * @param $expected
    * @param $input1
    * @param $input2
@@ -63,7 +26,7 @@ final class CalculatorTest extends TestCase {
   }
 
   /**
-   * @dataProvider dataForSubtraction
+   * @dataProvider \unit_test_application\DataProvider::dataForSubtraction()
    * @return void
    */
   public function testSubtract(int $expected, int $input1, int $input2) : void {
@@ -72,7 +35,7 @@ final class CalculatorTest extends TestCase {
   }
 
   /**
-   * @dataProvider dataForMultiply
+   * @dataProvider \unit_test_application\DataProvider::dataForMultiply()
    * @param int $expected
    * @param int $input1
    * @param int $input2
@@ -86,7 +49,7 @@ final class CalculatorTest extends TestCase {
   }
 
   /**
-   * @dataProvider dataForDivsion
+   * @dataProvider \unit_test_application\DataProvider::dataForDivsion()
    * @param int $expected
    * @param int $input1
    * @param int $input2
