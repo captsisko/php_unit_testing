@@ -54,7 +54,7 @@ final class CalculatorTest extends TestCase {
   }
 
   /**
-   * @dataProvider \unit_test_application\DataProvider::dataForDivsion()
+   * @dataProvider \unit_test_application\DataProvider::dataForDivision()
    *
    * @param int $expected
    * @param int $input1

@@ -4,7 +4,7 @@ namespace unit_test_application;
 
 class DataProvider {
 
-  public static function messagesDataSource(): array {
+  public static function messages(): array {
     return [
       ['hello'],
       ['world'],
@@ -14,7 +14,7 @@ class DataProvider {
     ];
   }
 
-  public static function specialCharacterDataSource() {
+  public static function specialCharacters(): array {
     return [
       ['@'],
       ['£%'],
@@ -24,7 +24,7 @@ class DataProvider {
     ];
   }
 
-  public static function dataForAddition() {
+  public static function dataForAddition(): array {
     return [
       [2, 1, 1],
       [3, 3, 0],
@@ -33,7 +33,7 @@ class DataProvider {
     ];
   }
 
-  public static function dataForSubtraction() {
+  public static function dataForSubtraction(): array {
     return [
       [0, 1, 1],
       [-2, -1, 1],
@@ -44,7 +44,7 @@ class DataProvider {
     ];
   }
 
-  public static function dataForMultiply() {
+  public static function dataForMultiply(): array {
     return [
       [0, 0, 0],
       [1, -1, -1],
@@ -53,13 +53,24 @@ class DataProvider {
     ];
   }
 
-  public static function dataForDivsion() {
+  public static function dataForDivision(): array {
     return [
       [0.0, 0, 1],
       [2.0, 4, 2],
       [-20.0, -40, 2],
       [2.5, 5, 2],
     ];
+  }#
+
+  public static function spaceCounts(): array {
+    return [
+      [0],   // 1 space
+      [1],   // 1 space
+      [5],   // 5 spaces
+      [10],  // 10 spaces
+      [50],  // 50 spaces
+    ];
   }
+
 
 }

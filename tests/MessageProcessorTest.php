@@ -30,7 +30,7 @@ class MessageProcessorTest extends TestCase {
 
 
   /**
-   * @dataProvider \unit_test_application\DataProvider::messagesDataSource()
+   * @dataProvider \unit_test_application\DataProvider::messages()
    * @return void
    */
   function testLoggingViaMessageProcessor($data): void {
@@ -40,7 +40,7 @@ class MessageProcessorTest extends TestCase {
   }
 
   /**
-   * @dataProvider \unit_test_application\DataProvider::messagesDataSource()
+   * @dataProvider \unit_test_application\DataProvider::messages()
    * @return void
    */
   function testLoggingViaMessageProcessorCapitalized($data): void {
@@ -61,18 +61,27 @@ class MessageProcessorTest extends TestCase {
     }
   }
 
-  // test empty string
-  function testLoggingWhiteSpaceViaMessageProcessor(): void {
-    $loggerServiceFromMessageProcessor = $this->messageProcessorLoggerService->getValue($this->messageProcessor); // retrieves the value of the loggerService property from the MessageProcessor object.
-//    $loggerServiceFromMessageProcessor->log('');
-//    $this->expectOutputString('Log: ' . PHP_EOL);
+  /**
+   * @dataProvider \unit_test_application\DataProvider::spaceCounts()
+   *
+   * test empty string(s)
+   */
+  public function testLoggingWhiteSpaceViaMessageProcessor($spaceCount): void {
+    // Generate a string with the given number of spaces
+    $spaces = str_repeat(' ', $spaceCount);
 
-    $loggerServiceFromMessageProcessor->log(' ');
-    $this->expectOutputString('Log:  ' . PHP_EOL);
+    // Retrieve the loggerService instance from MessageProcessor
+    $loggerServiceFromMessageProcessor = $this->messageProcessorLoggerService->getValue($this->messageProcessor);
+
+    // Log the spaces
+    $loggerServiceFromMessageProcessor->log($spaces);
+
+    // Expect the exact output
+    $this->expectOutputString('Log: ' . $spaces . PHP_EOL);
   }
 
   /**
-   * @dataProvider \unit_test_application\DataProvider::specialCharacterDataSource()
+   * @dataProvider \unit_test_application\DataProvider::specialCharacters()
    * @return void
    *
    * test special characters
