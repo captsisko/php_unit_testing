@@ -1,6 +1,6 @@
 <?php
 
-namespace unit_test_application\stage_2;
+namespace unit_test_application\stage_02;
 
 class LoggerService {
 
